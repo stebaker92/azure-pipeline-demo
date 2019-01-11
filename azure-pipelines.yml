@@ -20,7 +20,7 @@ steps:
   displayName: 'dotnet test'
 - script: cd AzurePipelineDemo/
 - script: ls
-- script: dotnet publish --configuration $(buildConfiguration)'
+- script: 'dotnet publish --configuration $(buildConfiguration)'
   displayName: 'dotnet publish'
 
 # Archive Files
@@ -33,3 +33,4 @@ steps:
     #tarCompression: 'gz' # Optional. Options: gz, bz2, xz, none
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip' 
     replaceExistingArchive: true
+    
