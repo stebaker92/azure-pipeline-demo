@@ -21,7 +21,7 @@ namespace AzurePipelineDemo.Tests
         {
             var result = controller.Get();
 
-            Assert.IsType<ActionResult<IEnumerable<string>>>(result);
+            Assert.IsNotType<ActionResult<IEnumerable<string>>>(result);
         }
     }
 }
