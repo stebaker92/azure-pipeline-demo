@@ -14,3 +14,5 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)'
 - script: dotnet test
   displayName: 'dotnet test'
+- script: dotnet publish --configuration $(buildConfiguration)'
+  displayName: 'dotnet publish'
