@@ -6,6 +6,9 @@
 pool:
   vmImage: 'Ubuntu-16.04'
 
+trigger:
+- master
+
 variables:
   buildConfiguration: 'Release'
   releaseDirectory: 'AzurePipelineDemo/bin/release/netcoreapp2.1/AzurePipelineDemo'
@@ -15,6 +18,8 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)'
 - script: dotnet test
   displayName: 'dotnet test'
+- script: cd AzurePipelineDemo/
+- script: ls
 - script: dotnet publish --configuration $(buildConfiguration)'
   displayName: 'dotnet publish'
 
