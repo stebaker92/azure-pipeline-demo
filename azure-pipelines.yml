@@ -11,16 +11,17 @@ trigger:
 
 variables:
   buildConfiguration: 'Release'
-  releaseDirectory: 'AzurePipelineDemo/bin/release/netcoreapp2.1/AzurePipelineDemo'
+  releaseDirectory: 'AzurePipelineDemo/bin/Release/netcoreapp2.1/'
 
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 - script: dotnet test
   displayName: 'dotnet test'
-- script: cd AzurePipelineDemo/
-- script: ls
-- script: 'dotnet publish --configuration $(buildConfiguration)'
+- script: |
+    cd AzurePipelineDemo/
+    ls
+    'dotnet publish --configuration $(buildConfiguration)'
   displayName: 'dotnet publish'
 
 # Archive Files
@@ -28,7 +29,6 @@ steps:
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(releaseDirectory)' 
-    includeRootFolder: true
     archiveType: 'zip' # Options: zip, 7z, tar, wim
     #tarCompression: 'gz' # Optional. Options: gz, bz2, xz, none
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip' 
