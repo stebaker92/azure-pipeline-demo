@@ -21,7 +21,7 @@ steps:
 - script: |
     cd AzurePipelineDemo/
     ls
-    'dotnet publish --configuration $(buildConfiguration)'
+    dotnet publish --configuration $(buildConfiguration)
   displayName: 'dotnet publish'
 
 # Archive Files
